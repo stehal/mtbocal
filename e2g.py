@@ -33,13 +33,13 @@ def googleify(c, args, tf):
 	Events are converted to all day events to avoid confusion caused by different time zones. 
 	"""
 	for component in c.walk():
-       	if component.name == "VEVENT":
-            latitude = float(component.get('geo').to_ical().split(";")[0])
-            longitude = float(component.get('geo').to_ical().split(";")[1])
-            component['location'] = " ".join(component.get('geo').to_ical().split(";"))
-            component['description'] = component.get('url') + " " + args.tags
-            component['dtstart'] = time_convert(latitude, longitude,component['dtstart'].to_ical().decode('utf8') , tf)
-            component['dtend'] = component['dtstart']
+		if component.name == "VEVENT":
+			latitude = float(component.get('geo').to_ical().split(";")[0])
+			longitude = float(component.get('geo').to_ical().split(";")[1])
+			component['location'] = " ".join(component.get('geo').to_ical().split(";"))
+			component['description'] = component.get('url') + " " + args.tags
+			component['dtstart'] = time_convert(latitude, longitude,component['dtstart'].to_ical().decode('utf8') , tf)
+			component['dtend'] = component['dtstart']
   
 
 if __name__ == '__main__':
