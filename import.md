@@ -1,10 +1,10 @@
-# How to Import Races into the Calendar
+# How to Import Races from Another Calendar
 
 If you already have race information in a calendar which supports exporting to [iCalendar format](https://icalendar.org/) (many calendars do) then you can easily import these races
 into the global mtbo calendar.
 
 ## Creating an ical export file
-1. Export to ical format using your calendars export function
+1. Export to ical format using your calendar's export function
 1. Ensure the export file only contains MTBO races
 1. [Email the export file as an attachment](support.md).
 
