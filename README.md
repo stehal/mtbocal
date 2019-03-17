@@ -1,5 +1,4 @@
-# mtbocal
-A global calendar of mtbo races
+# A global calendar of mtbo races
 
 ## Tips for viewing the calendar
 [Tips for viewing and searching](view.md)
