@@ -8,4 +8,5 @@ In other words calendar entries are not moderated (at least for the time being) 
 
 [Please report problems or missuse](support.md)
 
-You can register several races in this way.
+You can register several races in this way but there is a max limit of 25 registrations per day (for all users). 
+If this limit is exceeded, try again tomorrow :persevere:
