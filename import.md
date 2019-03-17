@@ -12,4 +12,11 @@ into the global mtbo calendar.
 If you have an online calendar which makes a url available for synchronizing calendars then send the url #TODO. Please ensure the url points to a calendar
 which only contains MTBO races.
 
+## Example importing using Eventor 
+Several national federations (eg. [Sweden](https://eventor.orientering.se/Events), Norway and Australia) use Eventor which has a calendar supporting ical export.
+
+1. Select year, period "all", National and regional events, discipline "MTBO"
+1. Select "Export to Calendar" to download an Events.ics file
+1. Email the Events.ics file as an attatchment to #TODO
+
 
