@@ -6,7 +6,7 @@ Your race will be included directly in the calendar and you will receive an emai
 
 In other words calendar entries are not moderated (at least for the time being) before being included.
 
-[Please report problems or missuse](support.md)
+[Please report problems or misuse](support.md)
 
 You can register several races in this way but there is a max limit of 25 registrations per day (for all users). 
 If this limit is exceeded, try again tomorrow :persevere:
