@@ -17,5 +17,5 @@ These instructions are for google spreadsheet.
 1. [Convert downloaded file to ical format](https://manas.tungare.name/software/csv-to-ical/)
 1. [Email ical file](support.md)
 
-Other spreadsheets can be used in a similar fashion.
+Other spreadsheets eg Excel can be used in a similar fashion.
 
