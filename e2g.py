@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import unittest,sys
+import unittest,sys,re
 from datetime import datetime, timedelta
 from pytz import timezone
 import argparse
@@ -22,6 +22,8 @@ def time_convert(latitude, longitude, t, tf):
 	""" 
 	Latitude and longitude are used to determine timezone. The correct day local time can then be determined.
 	"""
+	if len(t) == 8:
+		return t
 	e = datetime.strptime(t, '%Y%m%dT%H%M%SZ')
 	e.astimezone(timezone(tf.timezone_at( lat=latitude, lng=longitude)))
 	return e.strftime('%Y%m%d')
