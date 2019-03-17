@@ -10,8 +10,8 @@ form submission.
 
 `e2g.py` script is used to convert eventor exported ical:
 
-* Google ignores `GEO` so we add latitude and longitude to `LOCATION´ instead
+* Google ignores `GEO` so we add latitude and longitude to `LOCATION` instead
 * Create country tags based on location
 * Convert all events to all day events and adjust day to event local time
-* Google ignores `URL``field so we add it to `DESCRIPTION` instead.
+* Google ignores `URL` field so we add it to `DESCRIPTION` instead.
 
