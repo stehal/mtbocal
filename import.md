@@ -4,7 +4,7 @@ If you already have race information in a calendar which supports exporting to [
 into the global mtbo calendar.
 
 ## Creating an ical export file
-1. Export to ical fprmat using your calendars export function
+1. Export to ical format using your calendars export function
 1. Ensure the export file only contains MTBO races
 1. [Email the export file as an attachment](support.md).
 
