@@ -14,7 +14,7 @@ def parseargs():
 	parser.add_argument("in_file", help="path of input file (ics)")
 	parser.add_argument("out_file", help="path of output file (ics)")
 	parser.add_argument("api_key", help="google api key for geocoding")
-	parser.add_argument("--tags", help="eg #YOUNGGUNS")
+	parser.add_argument("--tags", help="eg #YGWS #WMS")
 	args = parser.parse_args()
 	return args
 
@@ -59,8 +59,7 @@ def name2alpha3(cn_name):
 	return mapping.get(cn_name)
 
 def country_tag(latitude, longitude, api_key):
-	cn_name = geo2country(latitude, longitude, api_key)
-	return '#' + name2alpha3(cn_name) + " #" + cn_name
+	return '#' + name2alpha3(geo2country(latitude, longitude, api_key)) 
 	
 
 class TestMethods(unittest.TestCase):
@@ -70,7 +69,7 @@ class TestMethods(unittest.TestCase):
 		self.assertEqual( geo2country(-37.81,144.96, self.API_KEY), 'Australia')
 
 	def testGeoToTag(self):
-		self.assertEqual( country_tag(-37.81,144.96, self.API_KEY), '#AUS #Australia')
+		self.assertEqual( country_tag(-37.81,144.96, self.API_KEY), '#AUS')
 	
 	def testNameToAlpha3(self):
 		self.assertEqual( name2alpha3("Australia"), 'AUS')
