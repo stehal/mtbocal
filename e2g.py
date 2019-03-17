@@ -42,12 +42,19 @@ def googleify(c, args, tf):
 		args.tags = ""
 	for component in c.walk():
 		if component.name == "VEVENT":
-			latitude = float(component.get('geo').to_ical().split(";")[0])
-			longitude = float(component.get('geo').to_ical().split(";")[1])
-			component['location'] = " ".join(component.get('geo').to_ical().split(";"))
-			component['description'] = component.get('url') + " " + args.tags + " " + country_tag(latitude, longitude, args.api_key)
+			geo = component.get('geo')
+			latitude = 59.33
+			longitude = 18.07
+			if geo:
+				latitude = float(component.get('geo').to_ical().split(";")[0])
+				longitude = float(component.get('geo').to_ical().split(";")[1])
+				component['description'] = component.get('url') + " " + args.tags + " " + country_tag(latitude, longitude, args.api_key)
+				component['location'] = " ".join(geo.to_ical().split(";"))
+			else:
+				component['description'] = component.get('url') + " " + args.tags
 			component['dtstart'] = time_convert(latitude, longitude,component['dtstart'].to_ical().decode('utf8') , tf)
 			component['dtend'] = time_convert(latitude, longitude,component['dtend'].to_ical().decode('utf8') , tf)
+			
 
 def geo2country(latitude, longitude, api_key):
 	geocoder = Geocoder(api_key)
