@@ -23,5 +23,5 @@ use Eventor which has a calendar supporting ical export.
 1. Email the `Events.ics` file as an attatchment to the address below.
 
 
-##Email Address 
+## Email Address 
 Email files or url to <elah.nevets@gmail.com>.
