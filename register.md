@@ -4,6 +4,6 @@ You can register a single race using the [race registration form](https://goo.gl
 
 Your race will be included directly in the calendar and you will receive an email with a link for correcting and updating the race information.
 
-In other words calendar entries are not moderated before being included (at least for the time being).
+In other words calendar entries are not moderated (at least for the time being) before being included.
 
 Please report problems or missuse to <elah.nevets@gmail.com>
