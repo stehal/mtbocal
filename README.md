@@ -1,5 +1,5 @@
 # A global calendar of mtbo races
-
+[View a beta version of the calendar](https://calendar.google.com/calendar?cid=Y2t0cHI5cDA4b3IxMmcwODIwZzgza2NlMG9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ)
 ## Tips for viewing the calendar
 [Tips for viewing and searching](view.md)
 
