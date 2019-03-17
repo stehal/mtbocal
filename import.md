@@ -8,8 +8,8 @@ into the global mtbo calendar.
 1. Ensure the export file only contains MTBO races
 1. [Email the export file as an attachment](support.md).
 
-## Direct import using an url (internet address)
-If you have an online calendar which makes a url available for synchronizing calendars then [email the url](support.md). Please ensure the url points to a calendar
+## Direct import using an url (web address)
+If you have an online calendar which makes an url available for synchronizing calendars, [email the url](support.md). Please ensure the url points to a calendar
 which only contains MTBO races.
 
 ## Example importing using Eventor 
