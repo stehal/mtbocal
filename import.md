@@ -13,7 +13,9 @@ If you have an online calendar which makes a url available for synchronizing cal
 which only contains MTBO races.
 
 ## Example importing using Eventor 
-Several national federations (eg. [Sweden](https://eventor.orientering.se/Events), Norway and Australia) use Eventor which has a calendar supporting ical export.
+Several federations (eg. [IOF](https://eventor.orienteering.org/Events), [Sweden](https://eventor.orientering.se/Events), 
+[Norway](https://eventor.orientering.no/Events) and [Australia](https://eventor.orienteering.asn.au/Events)) 
+use Eventor which has a calendar supporting ical export.
 
 1. Select year, period `all`, event type `National and regional events`, discipline `MTBO`
 1. Select `Export to Calendar` to download an `Events.ics` file
