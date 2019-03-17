@@ -15,8 +15,8 @@ which only contains MTBO races.
 ## Example importing using Eventor 
 Several national federations (eg. [Sweden](https://eventor.orientering.se/Events), Norway and Australia) use Eventor which has a calendar supporting ical export.
 
-1. Select year, period "all", National and regional events, discipline "MTBO"
-1. Select "Export to Calendar" to download an Events.ics file
-1. Email the Events.ics file as an attatchment to #TODO
+1. Select year, period `all`, event type `National and regional events`, discipline `MTBO`
+1. Select `Export to Calendar` to download an `Events.ics` file
+1. Email the `Events.ics` file as an attatchment to #TODO
 
 
