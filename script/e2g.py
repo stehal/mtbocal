@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import unittest,sys,re
+import unittest,sys,re,json
 from datetime import datetime, timedelta
 from pytz import timezone
 import argparse
@@ -8,6 +8,15 @@ from timezonefinder import TimezoneFinder
 from icalendar import Calendar, Event
 from pygeocoder import Geocoder
 import pycountry
+
+def name2ioc():
+	with open("./data/country-codes_json.json",encoding="utf-8") as f:
+		json_string = f.read()
+		parsed_json = json.loads(json_string,encoding="utf-8")
+		convert = {}
+		for j in parsed_json:
+			convert[j["CLDR display name"]] =j["IOC"]
+		return convert
 
 def parseargs():
 	parser = argparse.ArgumentParser()
@@ -25,17 +34,17 @@ def time_convert(latitude, longitude, t, tf):
 	if len(t) == 8:
 		return t
 	e = datetime.strptime(t, '%Y%m%dT%H%M%SZ')
-	e.astimezone(timezone(tf.timezone_at( lat=latitude, lng=longitude)))
-	return e.strftime('%Y%m%d')
+	f = e.astimezone(timezone(tf.timezone_at( lat=latitude, lng=longitude)))
+	return f.strftime('%Y%m%d')
 
 def run(args):
 	out = open(args.out_file, "w")
 	c = Calendar.from_ical(open(args.in_file).read())
 	tf = TimezoneFinder()
-	googleify(c, args, tf)
+	googleify(c, args, tf, name2ioc())
 	out.write(c.to_ical().decode('UTF-8').replace('\r\n', '\n').strip())
 
-def googleify(c, args, tf):
+def googleify(c, args, tf, n2i):
 	"""
 	Converts eventor geo to location which is used by google. eventor supplied url and tags (supplied as args) are used to create description.
 	Events are converted to all day events to avoid confusion caused by different time zones. 
@@ -47,13 +56,20 @@ def googleify(c, args, tf):
 			geo = component.get('geo')
 			latitude = 59.33
 			longitude = 18.07
+			url = component.get('url')
+			
+			if not url:
+				url = ""
+			description = component.get("description")
+			if not description:
+				description = ""
 			if geo:
 				latitude = float(component.get('geo').to_ical().split(";")[0])
 				longitude = float(component.get('geo').to_ical().split(";")[1])
-				component['description'] = component.get('url') + " " + args.tags + " " + country_tag(latitude, longitude, args.api_key)
+				component['description'] = description + " " + url + " " + args.tags + " " + country_tag(latitude, longitude, args.api_key, n2i)
 				component['location'] = " ".join(geo.to_ical().split(";"))
 			else:
-				component['description'] = component.get('url') + " " + args.tags
+				component['description'] = description + " " + url + " " + args.tags
 			component['dtstart'] = time_convert(latitude, longitude,component['dtstart'].to_ical().decode('utf8') , tf)
 			component['dtend'] = time_convert(latitude, longitude,component['dtend'].to_ical().decode('utf8') , tf)
 			
@@ -63,12 +79,9 @@ def geo2country(latitude, longitude, api_key):
 	results =  geocoder.reverse_geocode(latitude, longitude)
 	return results.country
 
-def name2alpha3(cn_name):
-	mapping = {country.name: country.alpha_3 for country in pycountry.countries}
-	return mapping.get(cn_name)
 
-def country_tag(latitude, longitude, api_key):
-	return '#' + name2alpha3(geo2country(latitude, longitude, api_key)) 
+def country_tag(latitude, longitude, api_key, n2i):
+	return '#' + n2i.get((geo2country(latitude, longitude, api_key))) 
 	
 
 class TestMethods(unittest.TestCase):
@@ -78,14 +91,13 @@ class TestMethods(unittest.TestCase):
 		self.assertEqual( geo2country(-37.81,144.96, self.API_KEY), 'Australia')
 
 	def testGeoToTag(self):
-		self.assertEqual( country_tag(-37.81,144.96, self.API_KEY), '#AUS')
+		self.assertEqual( country_tag(-37.81,144.96, self.API_KEY,name2ioc()), '#AUS')
 	
-	def testNameToAlpha3(self):
-		self.assertEqual( name2alpha3("Australia"), 'AUS')
+	def testNameToIOC(self):
+		self.assertEqual( name2ioc().get("Switzerland"), 'SUI')
 		
 if __name__ == '__main__':
 	#TestMethods.API_KEY = sys.argv.pop()
 	#unittest.main()
 	args = parseargs()
-	run(args)
-	
+	run(args)	
