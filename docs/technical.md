@@ -15,3 +15,8 @@ form submission.
 * Convert all events to all-day events and adjust date to event's local time
 * Google ignores `URL` field so we add it to `DESCRIPTION` instead.
 
+
+Use this code to embed this calendar in a web page:
+```
+<iframe src="https://calendar.google.com/calendar/embed?src=cktpr9p08or12g0820g83kce0o%40group.calendar.google.com&ctz=Europe%2FStockholm" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+```
