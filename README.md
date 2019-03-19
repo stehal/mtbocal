@@ -13,11 +13,9 @@ or [here if you don't have a google account](https://calendar.google.com/calenda
 [Tips for viewing and searching](./docs/view.md)
 
 ## How to include races in the calendar
-To register a single race read [How to Include a Race in the Calendar](./docs/register.md).
-
-To do a bulk registration of multiple races read [How to Bulk Update the Calendar](./docs/bulk.md)
-
-To import races from another calendar [How to Import Races into the Calendar](./docs/import.md)
+* [How to add a single race to the calendar](./docs/register.md).
+* [How to bulk register multiple races](./docs/bulk.md)
+* [How to import races from another calendar](./docs/import.md)
 
 ## Technical documentation
 [Technical documentation](./docs/technical.md)
