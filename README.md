@@ -1,11 +1,11 @@
-# A global calendar of mtbo races
+# A Global Calendar of MTBO Races
 
 The global mtbo calendar aims to show all national and regional level mountainbike orienteering races.
 It currently includes races [imported]((./docs/import.md)) from federation fixture lists (currently IOF, Australia, Sweden, Switzerland, Latvia and Portugal).
-It but also supports individual [registration of race information](./docs/register.md).
+Individual [registration of race information](./docs/register.md) is also supported.
 
 View the [calendar here if you have a google account](https://calendar.google.com/calendar?cid=Y2t0cHI5cDA4b3IxMmcwODIwZzgza2NlMG9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ)
-or [here if you don't have a google account](https://calendar.google.com/calendar/embed?src=cktpr9p08or12g0820g83kce0o%40group.calendar.google.com)
+or [here if you don't have a google account](https://calendar.google.com/calendar/embed?src=cktpr9p08or12g0820g83kce0o%40group.calendar.google.com).
 
 ## Tips for viewing the calendar
 [Tips for viewing and searching](./docs/view.md)
