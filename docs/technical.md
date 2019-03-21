@@ -25,7 +25,7 @@ Use this code to embed this calendar in a web page:
 ```
 
 ## Import log
-* 2019-03-19 Races from Latvian fixture list, though only one race imported - why aren't Riga races in the calendar for example?
+* 2019-03-19 Races from Latvian fixture list, though only one race imported - why aren't Riga races in the Latvian fixture list for example?
 * 2019-03-18 Races from [Portuguese calendar](http://www.orioasis.pt/oasis/shortcut.php?&action=shortcut_events_all_info&calendarid=59%2C6%2C17%2C16%2C18%2C30%2C19%2C32%2C36%2C37%2C52%2C79%2C69%2C85%2C&disciplinid=2&country_code=PT&quantity=20&interval=calend&view_type=list&show_past_events=on&date_start=2019-03-11&col_name=on&col_place=on&col_type=on&col_org=on&col_date=on&col_options=on&task=export&)
 * 2019-03-17 Races from Swedish event calendar (eventor)
 * 2019-03-17 Races from Australian event calendar (eventor)
