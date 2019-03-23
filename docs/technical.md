@@ -21,7 +21,7 @@ form submission.
 ## Embed in a web page
 Use this code to embed this calendar in a web page:
 ```
-<iframe src="https://calendar.google.com/calendar/embed?src=cktpr9p08or12g0820g83kce0o%40group.calendar.google.com&ctz=Europe%2FStockholm" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+<iframe src="https://calendar.google.com/calendar/embed?showTz=0&amp;mode=AGENDA&amp;height=600&amp;wkst=2&amp;bgcolor=%2333cc00&amp;src=cktpr9p08or12g0820g83kce0o%40group.calendar.google.com&amp;color=%23691426&amp;ctz=Europe%2FStockholm" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 ```
 
 ## Import log
