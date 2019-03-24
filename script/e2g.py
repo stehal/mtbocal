@@ -2,6 +2,7 @@
 
 import unittest,sys,re,json
 from datetime import datetime, timedelta
+import pytz
 from pytz import timezone
 import argparse
 from timezonefinder import TimezoneFinder
@@ -34,7 +35,7 @@ def time_convert(latitude, longitude, t, tf):
 	if len(t) == 8:
 		return t
 	e = datetime.strptime(t, '%Y%m%dT%H%M%SZ')
-	f = e.astimezone(timezone(tf.timezone_at( lat=latitude, lng=longitude)))
+	f = pytz.utc.localize(e).astimezone(timezone(tf.timezone_at( lat=latitude, lng=longitude)))
 	return f.strftime('%Y%m%d')
 
 def run(args):
@@ -95,6 +96,22 @@ class TestMethods(unittest.TestCase):
 	
 	def testNameToIOC(self):
 		self.assertEqual( name2ioc().get("Switzerland"), 'SUI')
+
+
+	def testTimeConvertDst(self):
+		t = "20190822T220000Z"
+		tf = TimezoneFinder()
+		latitude = 59.36142
+		longitude = 18.061
+		self.assertEqual( time_convert(latitude, longitude, t, tf), '20190823')
+
+	def testTimeConvert(self):
+		t = "20190122T220000Z"
+		tf = TimezoneFinder()
+		latitude = 59.36142
+		longitude = 18.061
+		self.assertEqual( time_convert(latitude, longitude, t, tf), '20190122')
+
 		
 if __name__ == '__main__':
 	#TestMethods.API_KEY = sys.argv.pop()
