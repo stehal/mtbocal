@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import unittest,sys,re,json
+import unittest,sys,re,json,chardet
 from datetime import datetime, timedelta
 import pytz
 from pytz import timezone
@@ -34,13 +34,24 @@ def time_convert(latitude, longitude, t, tf):
 	"""
 	if len(t) == 8:
 		return t
-	e = datetime.strptime(t, '%Y%m%dT%H%M%SZ')
-	f = pytz.utc.localize(e).astimezone(timezone(tf.timezone_at( lat=latitude, lng=longitude)))
+	f = pytz.utc.localize(datetime.strptime(t, '%Y%m%dT%H%M%SZ')).astimezone(timezone(tf.timezone_at( lat=latitude, lng=longitude)))
+	
+	return f.strftime('%Y%m%d')
+
+def end_time_convert(latitude, longitude, t, tf):
+	if len(t) == 8:
+		return t
+	f = pytz.utc.localize(datetime.strptime(t, '%Y%m%dT%H%M%SZ')).astimezone(timezone(tf.timezone_at( lat=latitude, lng=longitude)))
+	if f.hour != 0 or f.minute != 0 or f.second != 0:
+		f += timedelta(days= 1)
 	return f.strftime('%Y%m%d')
 
 def run(args):
-	out = open(args.out_file, "w")
-	c = Calendar.from_ical(open(args.in_file).read())
+	out = open(args.out_file, "w", encoding='utf8')
+	rawdata = open(args.in_file, 'rb').read()
+	result = chardet.detect(rawdata)
+	charenc = result['encoding']
+	c = Calendar.from_ical(open(args.in_file, encoding=charenc).read())
 	tf = TimezoneFinder()
 	googleify(c, args, tf, name2ioc())
 	out.write(c.to_ical().decode('UTF-8').replace('\r\n', '\n').strip())
@@ -72,7 +83,7 @@ def googleify(c, args, tf, n2i):
 			else:
 				component['description'] = description + " " + url + " " + args.tags
 			component['dtstart'] = time_convert(latitude, longitude,component['dtstart'].to_ical().decode('utf8') , tf)
-			component['dtend'] = time_convert(latitude, longitude,component['dtend'].to_ical().decode('utf8') , tf)
+			component['dtend'] = end_time_convert(latitude, longitude, component['dtend'].to_ical().decode('utf8') , tf)
 			
 
 def geo2country(latitude, longitude, api_key):
@@ -112,6 +123,15 @@ class TestMethods(unittest.TestCase):
 		longitude = 18.061
 		self.assertEqual( time_convert(latitude, longitude, t, tf), '20190122')
 
+	def testEndTimeConvert(self):
+		t = "20190822T220000Z"
+		tf = TimezoneFinder()
+		latitude = 59.36142
+		longitude = 18.061
+		
+		self.assertEqual( end_time_convert(latitude, longitude, t, tf), '20190823')
+
+	
 		
 if __name__ == '__main__':
 	#TestMethods.API_KEY = sys.argv.pop()
