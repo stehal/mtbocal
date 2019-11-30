@@ -93,7 +93,11 @@ def geo2country(latitude, longitude, api_key):
 
 
 def country_tag(latitude, longitude, api_key, n2i):
-	return '#' + n2i.get((geo2country(latitude, longitude, api_key))) 
+	country=n2i.get((geo2country(latitude, longitude, api_key)))
+	
+	if not country:
+		return ""
+	return '#' + country 
 	
 
 class TestMethods(unittest.TestCase):
