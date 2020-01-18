@@ -82,8 +82,12 @@ def googleify(c, args, tf, n2i):
 				component['location'] = " ".join(geo.to_ical().split(";"))
 			else:
 				component['description'] = description + " " + url + " " + args.tags
-			component['dtstart'] = time_convert(latitude, longitude,component['dtstart'].to_ical().decode('utf8') , tf)
-			component['dtend'] = end_time_convert(latitude, longitude, component['dtend'].to_ical().decode('utf8') , tf)
+			component['dtstart'] = time_convert(latitude, longitude, component['dtstart'].to_ical().decode('utf8') , tf)
+			
+			if component.get('dtend'):
+				component['dtend'] = end_time_convert(latitude, longitude, component['dtend'].to_ical().decode('utf8') , tf)
+			
+				
 			
 
 def geo2country(latitude, longitude, api_key):
