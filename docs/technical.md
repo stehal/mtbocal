@@ -25,6 +25,9 @@ Use this code to embed this calendar in a web page:
 ```
 
 ## Import log
+* 2020-01-18 GER 2020 races imported (with some effort)
+* 2020-01-?? NOR 2020 race imported (despite wrong geo ref)
+* 2019-11-30 Races for 2020 SWE, IOF, AUS and POR imported
 * 2019-08-11 Races import from Sweden fixture list
 * 2019-07-06 Races import from Latvia, Sweden, Australia, IOF, Switzerland and Portugal fixture lists
 * 2019-03-19 Races from Latvian fixture list, though only one race imported - why aren't Riga races in the Latvian fixture list for example?

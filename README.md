@@ -3,7 +3,7 @@
 The [MTBO Global Race Calendar](https://calendar.google.com/calendar?cid=Y2t0cHI5cDA4b3IxMmcwODIwZzgza2NlMG9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ)
  is a world wide fixture list for national and regional level mountainbike orienteering races.
 At the moment it includes races [imported]((./docs/import.md)) from 
-federation fixture lists (Australia, IOF, Latvia, Portugal, Sweden, Switzerland). 
+federation fixture lists ([Australia](https://eventor.orienteering.asn.au/Events?organisations=2&classifications=International%2CChampionship%2CNational%2CRegional%2CLocal%2CClub&disciplines=MountainBike), [IOF](https://eventor.orienteering.org/Events?organisations=1&mode=List&disciplines=MountainBike), [Latvia](https://lof.lv/mtbo-calendar), [Portugal](http://www.orioasis.pt/oasis/shortcut.php?action=shortcut_events_all_info&), [Sweden](https://eventor.orientering.se/Events?organisations=1&disciplines=MountainBike&classifications=International%2CChampionship%2CNational%2CRegional%2CLocal%2CClub), [Switzerland](https://www.o-l.ch/cgi-bin/fixtures?kind=2)). 
 
 Individual [registration of race information](./docs/register.md) is also supported.
 
