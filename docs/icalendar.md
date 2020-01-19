@@ -6,7 +6,7 @@ including Google Calendar, Apple Calendar and Outlook. It's also supported by a 
 ## Support for iCalendar in federation fixture lists
 
 
-Product | Used by | [iCalendar export](#icalendar_export) | (Geocoding)[Geocoding] | (Custom MTBO URL)[custom_url] | Notes
+Product | Used by | [iCalendar export](#icalendar_export) | [Geocoding](Geocoding) | [Custom MTBO URL](custom_url) | Notes
 ------- | ------- | ----------- | --------- | ---------------------- | -----
 eventor | IOF, SWE, NOR, AUS |  :heavy_check_mark: |  :heavy_check_mark: |:x: |
 Unknown | SUI |  :heavy_check_mark: | :heavy_check_mark: | :x: |
