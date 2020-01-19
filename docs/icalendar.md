@@ -20,7 +20,7 @@ Unknown | FRA | :x: | :x: | :x: |
 
 ##### Table Footnotes
 ###### iCalendar export
-A tick in this column indicates that it is possible to export to iCalendar format? Though not necessarily easy or pretty (see Notes column).
+A tick in this column indicates that it is possible to export to iCalendar format - though not necessarily easy or pretty (see Notes column).
 
 ###### Geocoding 
 A GEO tag makes it possible to show race location on a map.
