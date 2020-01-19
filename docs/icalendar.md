@@ -6,7 +6,7 @@ including Google Calendar, Apple Calendar and Outlook. It's also supported by a 
 ## Support for iCalendar in federation fixture lists
 
 
-Product | Used by | iCal export[1] | Geo coded | Direct Url for MTBO | Notes
+Product | Used by | iCal export [1] | Geo coded [2] | Custom URL for MTBO [3] | Notes
 ------- | ------- | ----------- | --------- | ---------------------- | -----
 eventor | IOF, SWE, NOR, AUS |  :heavy_check_mark: |  :heavy_check_mark: |:x: |
 Unknown | SUI |  :heavy_check_mark: | :heavy_check_mark: | :x: |
@@ -19,4 +19,6 @@ ORIS | CZE | :x: | :x: | :x: |
 Unknown | FRA | :x: | :x: | :x: |
 
 [1] It's possible to export export fixtures in iCalendar format (not always easy or pretty)
+[2] With a GEO tag, race location can be shown on a map.
+[3] With a custom endpoint it's possible to automatically schedule synchronisation of fixtures to another calendar.
 
