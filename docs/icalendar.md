@@ -9,7 +9,7 @@ including Google Calendar, Apple Calendar and Outlook.
 Product | Used by | iCal export | Geo coded | Direct Url for MTBO | Notes
 ------- | ------- | ----------- | --------- | ---------------------- | -----
 eventor | IOF, SWE, NOR, AUS | yes | yes | no |
-OriOasis | POR | :+1: | :-1: | :-1: | Bug: missing UID, races must to be deleted manually before updating.
+OriOasis | POR | :heavy_check_mark: | :-1: | :-1: | Bug: missing UID, races must to be deleted manually before updating.
 O-Manager | GER |yes | no | no | Bug: error text in export file which must be deleted manually. Every race must be selected individually to export.
 Unknown | LAT | yes | no | no |
 O-Service | DEN | no | no | no |
