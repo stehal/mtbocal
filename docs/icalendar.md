@@ -5,6 +5,10 @@ including Google Calendar, Apple Calendar and Outlook.
 
 ## Support for iCalendar in orienteering fixture lists
 
+Test | Table
+----- | -----
+does htis | work 
+
 Product | Used by | iCal export | Geo coded | Url for export of MTBO | Notes
 --- | --- | --- | --- | --- 
 eventor | IOF, SWE, NOR, AUS | yes | yes | no |
