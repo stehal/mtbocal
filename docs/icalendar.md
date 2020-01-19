@@ -1,6 +1,6 @@
 # iCalendar
 
-iCalendar (shortened sometimes to ical) is an internet standard for exchange of calendar information. iCalendar is used and supported by many products
+[iCalendar](https://icalendar.org/) is an internet standard for exchange of calendar information. iCalendar is used and supported by many products
 including Google Calendar, Apple Calendar and Outlook. It's also supported by a few federation fixture lists.
 
 ## Support for iCalendar in federation fixture lists
