@@ -26,5 +26,5 @@ A tick in this column indicates that it is possible to export to iCalendar forma
 A GEO tag makes it possible to show race location on a map.
 
 ###### Custom URL
-A custom endpoint makes it possible to automatically schedule synchronisation of fixtures to another calendar.
+Without a custom url, exporting MTBO fixtures is a manual activity. A custom url makes it possible to automatically schedule synchronisation of fixtures to another calendar, reducing both work and risk that the information is out of date.
 
