@@ -18,7 +18,7 @@ IRMA | FIN | :x: | :x: | :x: |
 ORIS | CZE | :x: | :x: | :x: |
 Unknown | FRA | :x: | :x: | :x: |
 
-#iCalendar export
+#### iCalendar export
 It's possible to export export fixtures in iCalendar format (not always easy or pretty)
 
 ####[2] With a GEO tag, race location can be shown on a map.
