@@ -8,13 +8,13 @@ including Google Calendar, Apple Calendar and Outlook.
 
 Product | Used by | iCal export | Geo coded | Direct Url for MTBO | Notes
 ------- | ------- | ----------- | --------- | ---------------------- | -----
-eventor | IOF, SWE, NOR, AUS | yes | yes | no |
-OriOasis | POR | :heavy_check_mark: | :-1: | :-1: | Bug: missing UID, races must to be deleted manually before updating.
-O-Manager | GER |yes | no | no | Bug: error text in export file which must be deleted manually. Every race must be selected individually to export.
-Unknown | LAT | yes | no | no |
-O-Service | DEN | no | no | no |
-IRMA | FIN | no | no | no |
-ORIS | CZE | no | no | no |
-Unknown | SUI | yes | yes | no |
-Unknown | FRA | no | no | no |
+eventor | IOF, SWE, NOR, AUS |  :heavy_check_mark: |  :heavy_check_mark: |:x: |
+OriOasis | POR | :heavy_check_mark: | :x: | :x: | Bug: missing UID, races must to be deleted manually before updating.
+O-Manager | GER | :heavy_check_mark: | :x: | :x: | Bug: error text in export file which must be deleted manually. Every race must be selected individually to export.
+Unknown | LAT |  :heavy_check_mark: | :x: | :x: |
+O-Service | DEN | :x: | :x: | :x: |
+IRMA | FIN | :x: | :x: | :x: |
+ORIS | CZE | :x: | :x: | :x: |
+Unknown | SUI |  :heavy_check_mark: | :heavy_check_mark: | :x: |
+Unknown | FRA | :x: | :x: | :x: |
 
