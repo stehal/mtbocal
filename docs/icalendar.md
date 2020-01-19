@@ -3,7 +3,7 @@
 iCalendar (shortened sometimes to ical) is an internet standard for exchange of calendar information. iCalendar is used and supported by many products
 including Google Calendar, Apple Calendar and Outlook.
 
-## Support for iCalendar in orienteering fixture lists
+## Support for iCalendar in federation fixture lists
 
 
 Product | Used by | iCal export | Geo coded | Direct Url for MTBO | Notes
