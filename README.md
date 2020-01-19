@@ -28,8 +28,8 @@ or [here if you don't have a google account](https://calendar.google.com/calenda
 * [How to import races from another calendar	](./docs/import.md)
 
 ## Technical documentation
-[Technical documentation](./docs/technical.md)
-[iCalendar support ](./docs/icalendar.md) 
+* [Technical documentation](./docs/technical.md)
+* [iCalendar support ](./docs/icalendar.md) 
 
 
 
