@@ -5,30 +5,30 @@ The table shows which federation fixture lists offer iCalendar download of MTBO 
 | Federations:      | IOF, AUS, SWE, NOR | POR      | SUI                         | LAT    | CZE             | 
 | ----------------- | ------------------ | -------- | --------------------------- | -------| --------------- |
 | **Calendar product**                  | **Eventor**            | **OriOasis** | **Swiss Orienteering Calendar** | **LOF.LV** | **Google calendar** |
-| **ical download<sup>[1](#download)</sup>** | :heavy_check_mark:               | yes      | yes                         | yes    | yes             |
-| **ical feed<sup>[2](#feed)</sup>**         | :x:                 | no       | yes                         | no     | yes             |
-| **select only MTBO<sup>[3](#onlymtbo)</sup>** | yes                | yes      | yes                         | yes    | yes             |
-| **georeferenced<sup>[4](#GEO)</sup>**               | yes                | no       | no                          | no     | no              |
-| **location<sup>[5](#LOCATION)</sup>**          | no                 | yes      | yes                         | yes    | no              |
-| **status<sup>[6](#STATUS)</sup>**            | no                 | no       | yes                         | no     | no              |
-| **URL<sup>[7](#URL)</sup>**               | yes                | no       | no                          | yes    | no              |
+| **ical download<sup>[1](#download)</sup>** | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  :heavy_check_mark: |
+| **select only MTBO<sup>[2](#onlymtbo)</sup>** | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:  | :heavy_check_mark: | :heavy_check_mark:             |
+| **ical feed<sup>[3](#feed)</sup>**         | :x:                 | :x:       | :heavy_check_mark:                         | :x:     | :heavy_check_mark:             |
+| **georeferenced<sup>[4](#GEO)</sup>**               | :heavy_check_mark:                | :x:       | :x:                          | :x:     | :x:              |
+| **location<sup>[5](#LOCATION)</sup>**          | :x:                 | :heavy_check_mark:      | :heavy_check_mark: | :heavy_check_mark: | :x:              |
+| **status<sup>[6](#STATUS)</sup>**            | :x:                 | :x:       | :heavy_check_mark:                         | :x:     | :x:              |
+| **URL<sup>[7](#URL)</sup>**               | :heavy_check_mark:                | :x:       | :x:                          | :heavy_check_mark:    | :x:              |
 
 Note: Both GBR and SLO fixture lists have iCalendar downloads but do not support selection of events by discipline which means that it is not possible to import only mtbo events to the 
 global calendar.
 
 <a name="download">1</a>: iCalendar information can be downloaded as a file which can then be manually imported to the global calendar.
 
-<a name="feed">2</a>: iCalendar information can be fetched by custom url (fascilitates fully automated import to global calendar.
+<a name="onlymtbo">2</a>: Include only MTBO events in exported file and feed.
 
-<a name="onlymtbo">3</a>: Include only MTBO events
+<a name="feed">3</a>: iCalendar information can be fetched by custom url (fascilitates fully automated import to global calendar.
 
-<a name="GEO">4</a>: Includes georeference of the event
+<a name="GEO">4</a>: Includes georeference of the event in the event information.
 
-<a name="LOCATION">5</a>: Includes location of the event in text
+<a name="LOCATION">5</a>: Includes text location of the event.
 
-<a name="STATUS">6</a>: Includes event status (particularly important to indicate if event is cancelled)
+<a name="STATUS">6</a>: Includes event status (particularly important to indicate if event is cancelled).
 
-<a name="URL">7</a>: Link to more event information
+<a name="URL">7</a>: Link to more event information.
 
 
 
