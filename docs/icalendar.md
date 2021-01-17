@@ -4,7 +4,7 @@ The table shows which federation fixture lists offer iCalendar download of MTBO 
 
 | Federations:      | IOF, AUS, SWE, NOR | POR      | SUI                         | LAT    | CZE             | 
 | ----------------- | ------------------ | -------- | --------------------------- | -------| --------------- |
-| **Calendar product**                  | **Eventor**            | **OriOasis** | **Swiss Orienteering Calendar** | **LOF.LV** | **Google calendar** |
+| **Calendar product:**                  | Eventor            | OriOasis | Swiss Orienteering Calendar | LOF.LV | Google calendar |
 | **ical download<sup>[1](#download)</sup>** | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  :heavy_check_mark: |
 | **select only MTBO<sup>[2](#onlymtbo)</sup>** | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:  | :heavy_check_mark: | :heavy_check_mark:             |
 | **ical feed<sup>[3](#feed)</sup>**         | :x:                 | :x:       | :heavy_check_mark:                         | :x:     | :heavy_check_mark:             |
