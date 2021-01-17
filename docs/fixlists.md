@@ -1,4 +1,4 @@
-# Survey of Fixture Lists with iCalendar Download
+# Survey of Fixture Lists which Support iCalendar Download
 
 The table shows which federation fixture lists offer iCalendar download of MTBO events and which features are supported. 
 
