@@ -1,30 +1,28 @@
-# iCalendar
+# Fixture Lists which Support iCalendar Download
 
-[iCalendar](https://icalendar.org/) is an internet standard for exchange of calendar information. iCalendar is used and supported by many products
-including Google Calendar, Apple Calendar and Microsoft Outlook. It's also supported by a few federation fixture lists.
+The table shows which federation fixture lists offer iCalendar download of MTBO events and which features are supported. 
 
-## Support for iCalendar in federation fixture lists
+| Federations:      | IOF, AUS, SWE, NOR | POR      | SUI                         | LAT    | CZE             | 
+| ----------------- | ------------------ | -------- | --------------------------- | -------| --------------- |
+| **Calendar product**                  | **Eventor**            | **OriOasis** | **Swiss Orienteering Calendar** | **LOF.LV** | **Google calendar** |
+| **ical download<sup>[1](#download)</sup>** | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |  :heavy_check_mark: |
+| **select only MTBO<sup>[2](#onlymtbo)</sup>** | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:  | :heavy_check_mark: | :heavy_check_mark:             |
+| **ical feed<sup>[3](#feed)</sup>**         | :x:                 | :x:       | :heavy_check_mark:                         | :x:     | :heavy_check_mark:             |
+| **georeferenced<sup>[4](#GEO)</sup>**               | :heavy_check_mark:                | :x:       | :x:                          | :x:     | :x:              |
+| **location<sup>[5](#LOCATION)</sup>**          | :x:                 | :heavy_check_mark:      | :heavy_check_mark: | :heavy_check_mark: | :x:              |
+| **status<sup>[6](#STATUS)</sup>**            | :x:                 | :x:       | :heavy_check_mark:                         | :x:     | :x:              |
+| **URL<sup>[7](#URL)</sup>**               | :heavy_check_mark:                | :x:       | :x:                          | :heavy_check_mark:    | :x:              |
 
+Note: Both GBR and SLO fixture lists have iCalendar downloads but do not support selection of events by discipline which means that it is not possible to import only mtbo events to the 
+global calendar.
 
-Product | Used by | [iCalendar export](#icalendar-export) | [Geocoding](#geocoding) | [Custom MTBO URL](#custom-url) | Notes
-------- | ------- | ----------- | --------- | ---------------------- | -----
-eventor | IOF, SWE, NOR, AUS |  :heavy_check_mark: |  :heavy_check_mark: |:x: |
-Unknown | SUI |  :heavy_check_mark: | :heavy_check_mark: | :x: |
-OriOasis | POR | :heavy_check_mark: | :x: | :x: | Bug: missing UID, races must to be deleted manually before updating.
-O-Manager | GER | :heavy_check_mark: | :x: | :x: | Bug: error text in export file which must be deleted manually. Every race must be selected individually to export.
-Unknown | LAT |  :heavy_check_mark: | :x: | :x: |
-O-Service | DEN | :x: | :x: | :x: |
-IRMA | FIN | :x: | :x: | :x: |
-ORIS | CZE | :x: | :x: | :x: |
-Unknown | FRA | :x: | :x: | :x: |
+### Footnotes
+<a name="download">1</a>: iCalendar information can be downloaded as a file which can then be manually imported to the global calendar.  
+<a name="onlymtbo">2</a>: Include only MTBO events in exported file and feed.  
+<a name="feed">3</a>: iCalendar information can be fetched by custom url (fascilitates fully automated import to global calendar.  
+<a name="GEO">4</a>: Includes georeference of the event in the event information.  
+<a name="LOCATION">5</a>: Includes text location of the event.  
+<a name="STATUS">6</a>: Includes event status (particularly important to indicate if event is cancelled).  
+<a name="URL">7</a>: Link to more event information.
 
-##### Table Footnotes
-###### iCalendar export
-A tick in this column indicates that it is possible to export to iCalendar format - though not necessarily easy or pretty (see Notes column).
-
-###### Geocoding 
-A GEO tag makes it possible to show race location on a map.
-
-###### Custom URL
-Without a custom url, exporting MTBO fixtures is a manual activity. A custom url makes it possible to automatically schedule synchronisation of fixtures to another calendar, reducing both work and risk that the information is out of date.
 
