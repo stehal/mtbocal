@@ -5,7 +5,7 @@ The [MTBO Global Race Calendar](https://calendar.google.com/calendar?cid=Y2t0cHI
 At the moment it includes races ([imported](./docs/import.md)) from 
 federation fixture lists 
 ([Australia](https://eventor.orienteering.asn.au/Events?organisations=2&classifications=International%2CChampionship%2CNational%2CRegional%2CLocal%2CClub&disciplines=MountainBike),
-([Czech Republic](http://www.mtbo.cz/zavody/kalendar-zavodu/)),
+[Czech Republic](http://www.mtbo.cz/zavody/kalendar-zavodu/),
 [IOF](https://eventor.orienteering.org/Events?organisations=1&mode=List&disciplines=MountainBike), 
 [Latvia](https://lof.lv/mtbo-calendar), [Norway](https://eventor.orientering.no/Events), 
 [Portugal](http://www.orioasis.pt/oasis/shortcut.php?action=shortcut_events_all_info&), 
