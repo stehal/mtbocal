@@ -1,2 +1,7 @@
 *.ics
 *.csv
+api_key
+token.pickle
+credentials.json
+downloads/*
+script/__pycache__/*

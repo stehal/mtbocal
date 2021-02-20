@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 
-import unittest,sys,re,json,chardet
+import sys,re,json,chardet
 from datetime import datetime, timedelta
-import pytz
-from pytz import timezone
+from pytz import timezone, utc
 import argparse
 from timezonefinder import TimezoneFinder
 from icalendar import Calendar, Event
 from pygeocoder import Geocoder
 import pycountry
+from geopy import geocoders
+
 
 def name2ioc():
 	with open("./data/country-codes_json.json",encoding="utf-8") as f:
@@ -24,7 +25,7 @@ def parseargs():
 	parser.add_argument("in_file", help="path of input file (ics)")
 	parser.add_argument("out_file", help="path of output file (ics)")
 	parser.add_argument("api_key", help="google api key for geocoding")
-	parser.add_argument("--tags", help="eg #YGWS #WMS")
+	parser.add_argument("--tags", help="eg #YGWS #WMS #CZE #IOF")
 	args = parser.parse_args()
 	return args
 
@@ -34,14 +35,14 @@ def time_convert(latitude, longitude, t, tf):
 	"""
 	if len(t) == 8:
 		return t
-	f = pytz.utc.localize(datetime.strptime(t, '%Y%m%dT%H%M%SZ')).astimezone(timezone(tf.timezone_at( lat=latitude, lng=longitude)))
+	f = utc.localize(datetime.strptime(t, '%Y%m%dT%H%M%SZ')).astimezone(timezone(tf.timezone_at( lat=latitude, lng=longitude)))
 	
 	return f.strftime('%Y%m%d')
 
 def end_time_convert(latitude, longitude, t, tf):
 	if len(t) == 8:
 		return t
-	f = pytz.utc.localize(datetime.strptime(t, '%Y%m%dT%H%M%SZ')).astimezone(timezone(tf.timezone_at( lat=latitude, lng=longitude)))
+	f = utc.localize(datetime.strptime(t, '%Y%m%dT%H%M%SZ')).astimezone(timezone(tf.timezone_at( lat=latitude, lng=longitude)))
 	if f.hour != 0 or f.minute != 0 or f.second != 0:
 		f += timedelta(days= 1)
 	return f.strftime('%Y%m%d')
@@ -51,18 +52,21 @@ def run(args):
 	rawdata = open(args.in_file, 'rb').read()
 	result = chardet.detect(rawdata)
 	charenc = result['encoding']
-	c = Calendar.from_ical(open(args.in_file, encoding=charenc).read())
-	tf = TimezoneFinder()
-	googleify(c, args, tf, name2ioc())
+	calendar = Calendar.from_ical(open(args.in_file, encoding=charenc).read())
+
+	tags = args.tags
+	if not tags:
+		tags = ""
+	googleify(calendar, tags, args.api_key, name2ioc())
 	out.write(c.to_ical().decode('UTF-8').replace('\r\n', '\n').strip())
 
-def googleify(c, args, tf, n2i):
+def googleify(c, tags, api_key, n2i):
 	"""
-	Converts eventor geo to location which is used by google. eventor supplied url and tags (supplied as args) are used to create description.
+	Converts eventor geo to location which is used by google. Eventor supplied url and tags (supplied as args) are used to create description.
 	Events are converted to all day events to avoid confusion caused by different time zones. 
 	"""
-	if not args.tags:
-		args.tags = ""
+	tf = TimezoneFinder()
+
 	for component in c.walk():
 		if component.name == "VEVENT":
 			geo = component.get('geo')
@@ -78,71 +82,35 @@ def googleify(c, args, tf, n2i):
 			if geo:
 				latitude = float(component.get('geo').to_ical().split(";")[0])
 				longitude = float(component.get('geo').to_ical().split(";")[1])
-				component['description'] = description + " " + url + " " + args.tags + " " + country_tag(latitude, longitude, args.api_key, n2i)
+				component['description'] = description + " " + url + " " + tags + " " + country_tag(latitude, longitude, api_key, n2i)
 				component['location'] = " ".join(geo.to_ical().split(";"))
 			else:
-				component['description'] = description + " " + url + " " + args.tags
+				component['description'] = description + " " + url + " " + tags
 			component['dtstart'] = time_convert(latitude, longitude, component['dtstart'].to_ical().decode('utf8') , tf)
 			
 			if component.get('dtend'):
 				component['dtend'] = end_time_convert(latitude, longitude, component['dtend'].to_ical().decode('utf8') , tf)
-			
-				
-			
 
 def geo2country(latitude, longitude, api_key):
 	geocoder = Geocoder(api_key)
 	results =  geocoder.reverse_geocode(latitude, longitude)
 	return results.country
 
+def loc2geo(address, api_key):
+	geolocator = geocoders.GoogleV3(api_key=api_key)
+	return geolocator.geocode(address)
+
+def geo2loc(point):
+	geolocator = geocoders.Nominatim(user_agent='elah.nevets@gmail.com')
+	return geolocator.reverse(point)
+
 
 def country_tag(latitude, longitude, api_key, n2i):
 	country=n2i.get((geo2country(latitude, longitude, api_key)))
-	
 	if not country:
 		return ""
 	return '#' + country 
-	
-
-class TestMethods(unittest.TestCase):
-	API_KEY = 'secret'
-	
-	def testGeoToCountry(self):
-		self.assertEqual( geo2country(-37.81,144.96, self.API_KEY), 'Australia')
-
-	def testGeoToTag(self):
-		self.assertEqual( country_tag(-37.81,144.96, self.API_KEY,name2ioc()), '#AUS')
-	
-	def testNameToIOC(self):
-		self.assertEqual( name2ioc().get("Switzerland"), 'SUI')
-
-
-	def testTimeConvertDst(self):
-		t = "20190822T220000Z"
-		tf = TimezoneFinder()
-		latitude = 59.36142
-		longitude = 18.061
-		self.assertEqual( time_convert(latitude, longitude, t, tf), '20190823')
-
-	def testTimeConvert(self):
-		t = "20190122T220000Z"
-		tf = TimezoneFinder()
-		latitude = 59.36142
-		longitude = 18.061
-		self.assertEqual( time_convert(latitude, longitude, t, tf), '20190122')
-
-	def testEndTimeConvert(self):
-		t = "20190822T220000Z"
-		tf = TimezoneFinder()
-		latitude = 59.36142
-		longitude = 18.061
-		
-		self.assertEqual( end_time_convert(latitude, longitude, t, tf), '20190823')
-
-	
 		
 if __name__ == '__main__':
-	#TestMethods.API_KEY = sys.argv.pop()
-	#unittest.main()
 	args = parseargs()
 	run(args)	
