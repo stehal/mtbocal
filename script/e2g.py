@@ -13,8 +13,8 @@ from geopy import geocoders
 
 def name2ioc():
 	with open("./data/country-codes_json.json",encoding="utf-8") as f:
-		json_string = f.read()
-		parsed_json = json.loads(json_string,encoding="utf-8")
+		json_string = f.read().encode("utf-8")
+		parsed_json = json.loads(json_string)
 		convert = {}
 		for j in parsed_json:
 			convert[j["CLDR display name"]] =j["IOC"]

@@ -29,27 +29,30 @@ nextyear=today+datedelta.YEAR
 startdate= today.strftime('%Y-%m-%d')
 year=startdate[:4]
 enddate=nextyear.strftime('%Y-%m-%d')
+endyear=enddate[:4]
 
 swe_url="https://eventor.orientering.se/Events/ExportICalendarEvents?startDate={}&endDate={}&organisations=1&classifications=International%2CChampionship%2CNational%2CRegional&disciplines=MountainBike&cancelled=False".format(startdate,enddate)
 aus_url="https://eventor.orienteering.asn.au/Events/ExportICalendarEvents?startDate={}&endDate={}&organisations=1&classifications=International%2CChampionship%2CNational%2CRegional%2CLocal&disciplines=MountainBike&cancelled=False".format(startdate,enddate)
-esp_url= 'https://calendar.google.com/calendar/ical/hsa5ki3pjtpodh0efs48m3sifc%40group.calendar.google.com/public/basic.ics'
+#esp_url= 'https://calendar.google.com/calendar/ical/hsa5ki3pjtpodh0efs48m3sifc%40group.calendar.google.com/public/basic.ics'
 nor_url='https://eventor.orientering.no/Events/ExportICalendarEvents?startDate={}&endDate={}&organisations=2%2C1&disciplines=MountainBike&classifications=International%2CChampionship%2CNational%2CRegional%2CLocal&cancelled=False'.format(startdate,enddate)
 iof_url_wre='https://eventor.orienteering.org/Events/ExportICalendarEvents?startDate={}&endDate={}&organisations=1&disciplines=MountainBike&mode=List&attributes=5&cancelled=False'.format(startdate,enddate)
 iof_url_major='https://eventor.orienteering.org/Events/ExportICalendarEvents?startDate={}&endDate={}&organisations=1&disciplines=MountainBike&attributes=1%2C2%2C3%2C4%2C6&mode=List&cancelled=False'.format(startdate,enddate)
 cze_url='https://calendar.google.com/calendar/ical/6vppph2la1prss8uor5irvl6t0%40group.calendar.google.com/public/basic.ics'
 sui_url='https://www.o-l.ch/cgi-bin/fixtures?&year={}&kind=2&ics=1'.format(year)
+sui_url_nextyear='https://www.o-l.ch/cgi-bin/fixtures?&year={}&kind=2&ics=1'.format(endyear)
 por_url='http://www.orioasis.pt/oasis/shortcut.php?action=shortcut_events_all_info&view_type=list&calendarid%5B%5D=&disciplinid=2&view_type_radio=list&country_code=-1&region_code=&quantity=20&interval=calend&year={}&date_start={}&col_name=on&col_place=on&col_type=on&col_org=on&col_date=on&col_options=on&task=export'.format(year,startdate)
 bul_url="https://calendar.google.com/calendar/ical/2e964f5pvknim1fbcvoqr4avco%40group.calendar.google.com/public/basic.ics"
 sources = []
 
 sources.append(Source(aus_url,'#AUS',-33.0, 151.0))
 sources.append(Source(swe_url,'#SWE'))
-sources.append(Source(esp_url,'#ESP',40.43, -3.70))
+#sources.append(Source(esp_url,'#ESP',40.43, -3.70))
 sources.append(Source(iof_url_wre,'#IOF #WRE'))
 sources.append(Source(iof_url_major,'#IOF #MAJOR'))
 sources.append(Source(nor_url,'#NOR',59.92,10.75))
 sources.append(Source(cze_url,'#CZE',50.07,14.42))
 sources.append(Source( sui_url,"#SUI",46.95, 7.43))
+sources.append(Source( sui_url_nextyear,"#SUI",46.95, 7.43))
 sources.append(Source( por_url,"#POR",38.73, -9.14))
 sources.append(Source( bul_url,"#BUL",42.70,23.32))
 
