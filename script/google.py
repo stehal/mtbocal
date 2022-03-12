@@ -98,11 +98,15 @@ def googleify(calendarFeed, tags, api_key, n2i, latitude, longitude):
                 event['location'] = " ".join(geo.to_ical().split(";"))
             elif location:
                 event['location'] = location
-                location_geo = e2g.loc2geo(location, api_key)
-                if location_geo:
-                    latitude = location_geo.latitude
-                    longitude = location_geo.longitude
-                    event['description'] = description + " " + url + " " + tags2str(tags, e2g.country_tag(latitude, longitude, api_key, n2i))
+                try:
+                    location_geo = e2g.loc2geo(location, api_key)
+                    if location_geo:
+                        latitude = location_geo.latitude
+                        longitude = location_geo.longitude
+                        event['description'] = description + " " + url + " " + tags2str(tags, e2g.country_tag(latitude, longitude, api_key, n2i))
+                except BaseException:
+                    print("whoops {}".format(location))
+                    event['description'] = description + " " + url + " " + tags 
             else:
                 event['description'] = description + " " + url + " " + tags
             event['start'] = {'date':date2googledate(e2g.time_convert(latitude, longitude, component['dtstart'].to_ical().decode('utf8') , tf))}
@@ -146,6 +150,7 @@ def main():
 
     ioc_names = e2g.name2ioc()
     for src in sources:
+        print("importing from {}".format(src.url))
         r=requests.get(src.url, headers={'Accept': 'text/calendar'})
         if not r.encoding:
             r.encoding='utf-8'
