@@ -22,11 +22,13 @@ or [here if you don't have a google account](https://calendar.google.com/calenda
 [Tips for viewing and searching](./docs/view.md)
 
 ## How to include races in the calendar
-Importing of events into the the Global MTBO Race Calendar relies on the on the [iCalendar standard](https://icalendar.org/) for transferring calendar information between computer systems.
+Importing of events into the the Global MTBO Race Calendar relies on the [iCalendar standard](https://icalendar.org/) for transferring calendar information between computer systems.
 
-* If event details are available in an online calendar which supports the iCalendar standard then [send me the url](./docs/support.md).
-* Persuade your federation to use a fixtures calendar which supports the iCalendar standard then [send me the url](./docs/support.md).
-* [Create your own custom Google calendar](https://support.google.com/calendar/answer/37095?hl=en) (Google calendars supports the iCalendar standard) and enter the race details in this calendar. You can use the same calendar for multiple races. Make sure the calendar is public and [send me the url](./docs/support.md). Any changes you make will be regularly synchronized to the Global MTBO Race Calendar
+If event details are available in an online calendar which supports the iCalendar standard then [send me the url](./docs/support.md).
+
+Otherwise [Create your own custom Google calendar](https://support.google.com/calendar/answer/37095?hl=en) (Google calendars supports the iCalendar standard) and enter the race details in this calendar. You can use the same calendar for multiple races. Make sure the calendar is public and [send me the url](./docs/support.md). Any changes you make will be regularly synchronized to the Global MTBO Race Calendar.
+
+Or even better, persuade your federation to use a fixtures calendar which supports the iCalendar standard and then [send me the url](./docs/support.md)!
 
 ## Technical documentation
 * [Technical documentation](./docs/technical.md)

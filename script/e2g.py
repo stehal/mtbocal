@@ -6,7 +6,7 @@ from pytz import timezone, utc
 import argparse
 from timezonefinder import TimezoneFinder
 from icalendar import Calendar, Event
-from pygeocoder import Geocoder
+from pygeocoder import Geocoder, GeocoderError
 import pycountry
 from geopy import geocoders
 
@@ -93,8 +93,12 @@ def googleify(c, tags, api_key, n2i):
 
 def geo2country(latitude, longitude, api_key):
 	geocoder = Geocoder(api_key)
-	results =  geocoder.reverse_geocode(latitude, longitude)
-	return results.country
+	try:
+		results =  geocoder.reverse_geocode(latitude, longitude)
+		return results.country
+	except GeocoderError as err:
+		print("Error reverse geocoding: ", err, latitude, longitude)
+		return None
 
 def loc2geo(address, api_key):
 	geolocator = geocoders.GoogleV3(api_key=api_key)

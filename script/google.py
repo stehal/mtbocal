@@ -42,6 +42,8 @@ sui_url='https://www.o-l.ch/cgi-bin/fixtures?&year={}&kind=2&ics=1'.format(year)
 sui_url_nextyear='https://www.o-l.ch/cgi-bin/fixtures?&year={}&kind=2&ics=1'.format(endyear)
 por_url='http://www.orioasis.pt/oasis/shortcut.php?action=shortcut_events_all_info&view_type=list&calendarid%5B%5D=&disciplinid=2&view_type_radio=list&country_code=-1&region_code=&quantity=20&interval=calend&year={}&date_start={}&col_name=on&col_place=on&col_type=on&col_org=on&col_date=on&col_options=on&task=export'.format(year,startdate)
 bul_url="https://calendar.google.com/calendar/ical/2e964f5pvknim1fbcvoqr4avco%40group.calendar.google.com/public/basic.ics"
+hun_url="https://calendar.google.com/calendar/ical/fl0lsipnovbclj1ob5hgkva0ik%40group.calendar.google.com/public/basic.ics"
+
 sources = []
 
 sources.append(Source(aus_url,'#AUS',-33.0, 151.0))
@@ -55,6 +57,7 @@ sources.append(Source( sui_url,"#SUI",46.95, 7.43))
 sources.append(Source( sui_url_nextyear,"#SUI",46.95, 7.43))
 sources.append(Source( por_url,"#POR",38.73, -9.14))
 sources.append(Source( bul_url,"#BUL",42.70,23.32))
+sources.append(Source( hun_url,"#HUN",47.52,19.06))
 
 def insertupdate(globcalid, service, event, icaluid):
     event_from_globcal=service.events().list(calendarId=globcalid, iCalUID=icaluid).execute().get('items', [])
@@ -63,10 +66,8 @@ def insertupdate(globcalid, service, event, icaluid):
         service.events().update(eventId=event_from_globcal[0]['id'], calendarId=globcalid, body=event).execute()
     else:
         print('   import')
-        service.events().import_(calendarId=globcalid, body=event).execute()
-       
+        service.events().import_(calendarId=globcalid, body=event).execute()     
         
-
 def date2googledate(date):
     return date[:4] + '-' + date[4:6] + '-' + date[6:]
 
@@ -81,44 +82,47 @@ def googleify(calendarFeed, tags, api_key, n2i, latitude, longitude):
     tf = TimezoneFinder()
     events=[]
     for component in calendarFeed.walk():
-        if component.name == 'VEVENT':
-            event = {}
-            geo = component.get('geo')
-            url = component.get('url')
-            if not url:
-                url = ''
-            description = component.get('description')
-            location = component.get('location')
-            if not description:
-                description = ""
-            if geo:
-                latitude = float(component.get('geo').to_ical().split(";")[0])
-                longitude = float(component.get('geo').to_ical().split(";")[1])
-                event['description'] = description + " " + url + " " + tags2str(tags, e2g.country_tag(latitude, longitude, api_key, n2i))
-                event['location'] = " ".join(geo.to_ical().split(";"))
-            elif location:
-                event['location'] = location
-                try:
-                    location_geo = e2g.loc2geo(location, api_key)
-                    if location_geo:
-                        latitude = location_geo.latitude
-                        longitude = location_geo.longitude
-                        event['description'] = description + " " + url + " " + tags2str(tags, e2g.country_tag(latitude, longitude, api_key, n2i))
-                except BaseException:
-                    print("whoops {}".format(location))
-                    event['description'] = description + " " + url + " " + tags 
-            else:
-                event['description'] = description + " " + url + " " + tags
-            event['start'] = {'date':date2googledate(e2g.time_convert(latitude, longitude, component['dtstart'].to_ical().decode('utf8') , tf))}
-            if component.get('dtend'):
-                event['end'] = {'date':date2googledate(e2g.end_time_convert(latitude, longitude, component['dtend'].to_ical().decode('utf8') , tf))}
-            else:
-                event['end']=event['start']
-            event['iCalUID'] = str(component["uid"])
-            event['summary'] = str(component['summary'])
+        try:
+            if component.name == 'VEVENT':
+                event = {}
+                geo = component.get('geo')
+                url = component.get('url')
+                if not url:
+                    url = ''
+                description = component.get('description')
                
-            if event['start']['date'] >= startdate:
-                events.append(event)
+                location = component.get('location')
+                if not description:
+                    description = ""
+                if geo:
+                    latitude = float(component.get('geo').to_ical().split(";")[0])
+                    longitude = float(component.get('geo').to_ical().split(";")[1])
+                    event['description'] = description + " " + url + " " + tags2str(tags, e2g.country_tag(latitude, longitude, api_key, n2i))
+                    event['location'] = " ".join(geo.to_ical().split(";"))
+                elif location:
+                    event['location'] = location
+                    try:
+                        location_geo = e2g.loc2geo(location, api_key)
+                        if location_geo:
+                            latitude = location_geo.latitude
+                            longitude = location_geo.longitude
+                            event['description'] = description + " " + url + " " + tags2str(tags, e2g.country_tag(latitude, longitude, api_key, n2i))
+                    except BaseException:
+                        event['description'] = description + " " + url + " " + tags 
+                else:
+                    event['description'] = description + " " + url + " " + tags
+                event['start'] = {'date':date2googledate(e2g.time_convert(latitude, longitude, component['dtstart'].to_ical().decode('utf8') , tf))}
+                if component.get('dtend'):
+                    event['end'] = {'date':date2googledate(e2g.end_time_convert(latitude, longitude, component['dtend'].to_ical().decode('utf8') , tf))}
+                else:
+                    event['end']=event['start']
+                event['iCalUID'] = str(component["uid"])
+                event['summary'] = str(component['summary'])
+                if event['start']['date'] >= startdate:
+                    events.append(event)
+        except AttributeError as err:
+            print("Unexpected error:", err)
+
     return events
 
 def check_credentials():
@@ -152,10 +156,8 @@ def main():
     for src in sources:
         print("importing from {}".format(src.url))
         r=requests.get(src.url, headers={'Accept': 'text/calendar'})
-        if not r.encoding:
-            r.encoding='utf-8'
-        events = googleify(Calendar.from_ical(r.text), src.tags, api_key, ioc_names, src.lat, src.lng)
-        print("importing {} from from {}".format(len(events), src.url))
+        events = googleify(Calendar.from_ical(r.content), src.tags, api_key, ioc_names, src.lat, src.lng)
+        print("importing {} from {}".format(len(events), src.url))
         for event in events:
             print('   ' + event['summary'])
             insertupdate(calendarid, service, event, event['iCalUID'])
